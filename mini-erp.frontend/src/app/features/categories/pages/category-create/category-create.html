@@ -1,1 +1,14 @@
-<h2>Crear categoría</h2>
+<section class="page">
+  <h2>Nueva categoría</h2>
+  <p>Completá el formulario para crear una categoría.</p>
+
+  @if (errorMessage) {
+    <small class="error">{{ errorMessage }}</small>
+  }
+
+  <app-category-form
+    [loading]="loading"
+    submitText="Crear categoría"
+    (formSubmit)="onSubmit($event)"
+  />
+</section>

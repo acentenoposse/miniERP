@@ -1,1 +1,23 @@
-<p>Category form placeholder</p>
+<form class="category-form" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="field">
+    <label for="name">Nombre</label>
+    <input
+      id="name"
+      type="text"
+      formControlName="name"
+      placeholder="Ej: Electrónica"
+    />
+
+    @if (form.controls.name.touched && form.controls.name.hasError('required')) {
+      <small class="error">El nombre es obligatorio.</small>
+    }
+
+    @if (form.controls.name.touched && form.controls.name.hasError('maxlength')) {
+      <small class="error">El nombre no puede superar los 100 caracteres.</small>
+    }
+  </div>
+
+  <button type="submit" [disabled]="loading">
+    {{ loading ? 'Guardando...' : submitText }}
+  </button>
+</form>

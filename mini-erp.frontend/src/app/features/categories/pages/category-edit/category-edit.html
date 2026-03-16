@@ -1,1 +1,20 @@
-<h2>Editar categoría</h2>
+<section class="page">
+  <h2>Editar categoría</h2>
+
+  @if (pageLoading) {
+    <p>Cargando categoría...</p>
+  }
+
+  @if (!pageLoading && errorMessage) {
+    <small class="error">{{ errorMessage }}</small>
+  }
+
+  @if (!pageLoading && initialValue) {
+    <app-category-form
+      [initialValue]="initialValue"
+      [loading]="loading"
+      submitText="Guardar cambios"
+      (formSubmit)="onSubmit($event)"
+    />
+  }
+</section>

@@ -1,37 +1,59 @@
-<h2>Categorías</h2>
+<section class="page">
+  <div class="page-header">
+    <div>
+      <h2>Categorías</h2>
+      <p>Gestioná las categorías del sistema.</p>
+    </div>
 
-@if (loading) {
-  <p>Cargando...</p>
-}
+    <a class="create-button" routerLink="/categories/new">
+      Nueva categoría
+    </a>
+  </div>
 
-@if (!loading && categories.length === 0) {
-  <p>No hay categorías.</p>
-}
+  @if (errorMessage) {
+    <small class="error">{{ errorMessage }}</small>
+  }
 
-@if (categories.length > 0) {
+  @if (loading) {
+    <p>Cargando...</p>
+  }
 
-  <table class="table">
+  @if (!loading && categories.length === 0) {
+    <p>No hay categorías cargadas.</p>
+  }
 
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-      </tr>
-    </thead>
-
-    <tbody>
-
-      @for (category of categories; track category.id) {
-
+  @if (!loading && categories.length > 0) {
+    <table class="table">
+      <thead>
         <tr>
-          <td>{{ category.id }}</td>
-          <td>{{ category.name }}</td>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Acciones</th>
         </tr>
+      </thead>
 
-      }
+      <tbody>
+        @for (category of categories; track category.id) {
+          <tr>
+            <td>{{ category.id }}</td>
+            <td>{{ category.name }}</td>
+            <td class="actions">
+              <a class="action-link" [routerLink]="['/categories/edit', category.id]">
+                Editar
+              </a>
 
-    </tbody>
-
-  </table>
-
-}
+              <button
+                class="delete-button"
+                type="button"
+                [disabled]="deletingId === category.id"
+                (click)="deleteCategory(category)"
+              >
+                {{ deletingId === category.id ? 'Eliminando...' : 'Eliminar' }}
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>
