@@ -11,5 +11,16 @@
 }
 
 .content {
-  padding: 24px;
+  flex: 1;
+  padding: 28px;
+}
+
+@media (max-width: 960px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .content {
+    padding: 20px;
+  }
 }

@@ -1,7 +1,12 @@
 .category-form {
   display: grid;
-  gap: 16px;
-  max-width: 420px;
+  gap: 18px;
+  max-width: 560px;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
 }
 
 .field {
@@ -10,32 +15,44 @@
 }
 
 label {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 input {
   width: 100%;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  padding: 12px 14px;
+  border: 1px solid rgba(209, 213, 219, 0.9);
+  border-radius: 14px;
+  padding: 13px 14px;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: rgba(249, 115, 22, 0.65);
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.12);
 }
 
 button {
   width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
   border: 0;
-  border-radius: 10px;
-  padding: 12px 16px;
-  background: #111827;
+  border-radius: 14px;
+  padding: 12px 18px;
+  background: linear-gradient(135deg, var(--primary), #fb923c);
   color: white;
   cursor: pointer;
+  box-shadow: var(--shadow-soft);
 }
 
 button:disabled {
-  opacity: 0.7;
+  opacity: 0.75;
   cursor: not-allowed;
 }
 
 .error {
-  color: #dc2626;
+  color: var(--danger);
   font-size: 0.875rem;
 }

@@ -1,8 +1,12 @@
-<section class="page">
-  <h2>Editar categoría</h2>
+<section class="page-shell">
+  <div class="intro-card">
+    <p class="eyebrow">Categorías</p>
+    <h2>Editar categoría</h2>
+    <p>Actualizá la información de la categoría seleccionada.</p>
+  </div>
 
   @if (pageLoading) {
-    <p>Cargando categoría...</p>
+    <p class="state-message">Cargando categoría...</p>
   }
 
   @if (!pageLoading && errorMessage) {

@@ -1,1 +1,20 @@
-<h2>Editar producto</h2>
+<section class="page-shell">
+  <div class="intro-card">
+    <p class="eyebrow">Productos</p>
+    <h1>Editar producto</h1>
+    <p>Actualizá los datos del producto seleccionado.</p>
+  </div>
+
+  @if (errorMessage) {
+    <small class="error">{{ errorMessage }}</small>
+  }
+
+  @if (isLoading) {
+    <p class="state-message">Cargando producto...</p>
+  } @else if (initialValue) {
+    <app-product-form
+      [initialValue]="initialValue"
+      (formSubmit)="onSubmit($event)"
+    />
+  }
+</section>

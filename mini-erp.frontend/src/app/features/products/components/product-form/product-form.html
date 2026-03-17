@@ -1,1 +1,58 @@
-<p>Product form placeholder</p>
+<form class="product-form" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="form-group">
+    <label for="name">Nombre</label>
+    <input id="name" type="text" formControlName="name" placeholder="Ej: Cafetera Express" />
+
+    @if (nameControl.touched && nameControl.invalid) {
+      <small class="error">
+        @if (nameControl.errors?.['required']) {
+          El nombre es obligatorio.
+        } @else if (nameControl.errors?.['maxlength']) {
+          El nombre no puede superar los 100 caracteres.
+        }
+      </small>
+    }
+  </div>
+
+  <div class="form-group">
+    <label for="price">Precio</label>
+    <input id="price" type="number" step="0.01" formControlName="price" placeholder="Ej: 25000" />
+
+    @if (priceControl.touched && priceControl.invalid) {
+      <small class="error">
+        @if (priceControl.errors?.['required']) {
+          El precio es obligatorio.
+        } @else if (priceControl.errors?.['min']) {
+          El precio debe ser mayor a 0.
+        }
+      </small>
+    }
+  </div>
+
+  <div class="form-group">
+    <label for="categoryId">Categoría</label>
+
+    <select id="categoryId" formControlName="categoryId">
+      <option [ngValue]="null">Seleccionar categoría</option>
+
+      @for (category of categories; track category.id) {
+        <option [ngValue]="category.id">
+          {{ category.name }}
+        </option>
+      }
+    </select>
+
+    @if (categoryIdControl.touched && categoryIdControl.invalid) {
+      <small class="error">La categoría es obligatoria.</small>
+    }
+  </div>
+
+  @if (errorMessage) {
+    <small class="error">{{ errorMessage }}</small>
+  }
+
+  <button type="submit">
+    <span>✓</span>
+    Guardar
+  </button>
+</form>

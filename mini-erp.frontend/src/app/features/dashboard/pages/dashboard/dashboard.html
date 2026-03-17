@@ -1,2 +1,82 @@
-<h2>Dashboard</h2>
-<p>Bienvenido al panel administrativo.</p>
+<section class="dashboard-page">
+  <div class="hero-card">
+    <div>
+      <p class="eyebrow">Resumen general</p>
+      <h1>Dashboard</h1>
+      <p class="hero-copy">Visualizá rápidamente el estado de productos y categorías dentro del panel administrativo.</p>
+    </div>
+  </div>
+
+  @if (errorMessage) {
+    <small class="error">{{ errorMessage }}</small>
+  }
+
+  @if (isLoading) {
+    <p class="state-message">Cargando dashboard...</p>
+  } @else if (summary) {
+    <div class="stats-grid">
+      <article class="stat-card">
+        <div class="stat-icon">◩</div>
+        <div>
+          <h2>Productos</h2>
+          <p>{{ summary.productsCount }}</p>
+        </div>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-icon">◪</div>
+        <div>
+          <h2>Categorías</h2>
+          <p>{{ summary.categoriesCount }}</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="content-grid">
+      <article class="panel">
+        <div class="panel-header">
+          <h3>Últimos productos</h3>
+          <span class="panel-badge">Recientes</span>
+        </div>
+
+        @if (summary.recentProducts.length === 0) {
+          <p class="state-message">No hay productos cargados.</p>
+        } @else {
+          <ul class="records-list">
+            @for (product of summary.recentProducts; track product.id) {
+              <li>
+                <div>
+                  <strong>{{ product.name }}</strong>
+                  <span>{{ product.categoryName }}</span>
+                </div>
+                <span class="record-price">${{ product.price }}</span>
+              </li>
+            }
+          </ul>
+        }
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <h3>Últimas categorías</h3>
+          <span class="panel-badge">Recientes</span>
+        </div>
+
+        @if (summary.recentCategories.length === 0) {
+          <p class="state-message">No hay categorías cargadas.</p>
+        } @else {
+          <ul class="records-list records-list--compact">
+            @for (category of summary.recentCategories; track category.id) {
+              <li>
+                <div>
+                  <strong>{{ category.name }}</strong>
+                  <span>Disponible en el panel</span>
+                </div>
+              </li>
+            }
+          </ul>
+        }
+      </article>
+    </div>
+  }
+</section>

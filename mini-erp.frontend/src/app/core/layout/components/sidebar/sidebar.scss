@@ -1,15 +1,41 @@
 .sidebar {
-  width: 240px;
+  width: 272px;
   min-height: 100vh;
-  background: #0f172a;
+  background: var(--sidebar);
   color: #fff;
-  padding: 24px 18px;
+  padding: 28px 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 16px 0 40px rgba(15, 23, 42, 0.08);
+}
+
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+.brand-mark {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #e97a2d, #cf6418);
+  box-shadow: 0 12px 24px rgba(233, 122, 45, 0.22);
+  font-size: 1rem;
 }
 
 .brand {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 24px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.brand-subtitle {
+  margin: 4px 0 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: var(--font-sm);
 }
 
 .menu {
@@ -20,13 +46,44 @@
 
 .menu a {
   text-decoration: none;
-  color: #e5e7eb;
-  padding: 10px 12px;
-  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.84);
+  padding: 13px 14px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: 0.2s ease;
+  font-size: var(--font-sm);
+  font-weight: 600;
+}
+
+.menu-icon {
+  width: 24px;
+  text-align: center;
+  opacity: 0.95;
 }
 
 .menu a.active,
 .menu a:hover {
-  background: rgba(255,255,255,0.08);
+  background: linear-gradient(135deg, rgba(233, 122, 45, 0.24), rgba(207, 100, 24, 0.2));
   color: #fff;
+  transform: translateX(3px);
+  box-shadow: inset 0 0 0 1px rgba(233, 122, 45, 0.16);
+}
+
+@media (max-width: 960px) {
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .menu {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .menu a {
+    flex: 1 1 180px;
+  }
 }

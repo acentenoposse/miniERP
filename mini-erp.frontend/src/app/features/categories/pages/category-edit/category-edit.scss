@@ -1,8 +1,35 @@
-.page h2 {
-  margin-top: 0;
-  margin-bottom: 16px;
+.page-shell {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.intro-card {
+  padding: 1.4rem 1.5rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,237,213,0.88));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.intro-card h2 {
+  margin: 0 0 0.45rem;
+}
+
+.intro-card p,
+.state-message {
+  margin: 0;
+  color: var(--muted);
 }
 
 .error {
-  color: #dc2626;
+  color: var(--danger);
 }

@@ -1,0 +1,57 @@
+.product-form {
+  display: grid;
+  gap: 18px;
+  max-width: 620px;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.form-group {
+  display: grid;
+  gap: 0.45rem;
+}
+
+label {
+  font-weight: 700;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(209, 213, 219, 0.95);
+  border-radius: 14px;
+  font-size: 0.95rem;
+  background: white;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: rgba(249, 115, 22, 0.65);
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.12);
+}
+
+button {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.2rem;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  color: white;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary), #fb923c);
+  box-shadow: var(--shadow-soft);
+}
+
+.error {
+  color: var(--danger);
+  font-size: 0.85rem;
+}

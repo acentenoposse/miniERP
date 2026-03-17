@@ -1,2 +1,74 @@
-<h2>Productos</h2>
-<p>Acá va a ir la tabla de productos.</p>
+<section class="page-shell">
+  <div class="page-header">
+    <div>
+      <p class="eyebrow">Gestión</p>
+      <h1 class="page-title">Productos</h1>
+      <p class="subtitle">Administrá el catálogo y su relación con categorías.</p>
+    </div>
+  </div>
+
+  @if (errorMessage) {
+    <small class="error">{{ errorMessage }}</small>
+  }
+
+  @if (isLoading) {
+    <p class="state-message">Cargando productos...</p>
+  } @else if (products.length === 0) {
+    <div class="table-card empty-card">
+      <p class="state-message">No hay productos cargados.</p>
+      <div class="table-footer">
+        <button class="create-button" type="button" (click)="createProduct()">
+          <span>＋</span>
+          Nuevo producto
+        </button>
+      </div>
+    </div>
+  } @else {
+    <div class="table-card">
+      <table class="table table--products">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Categoría</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (product of products; track product.id) {
+            <tr>
+              <td>
+                <div class="entity-cell">
+                  <span class="entity-icon">◩</span>
+                  <span>{{ product.name }}</span>
+                </div>
+              </td>
+              <td><span class="price-chip">${{ product.price }}</span></td>
+              <td>{{ product.categoryName }}</td>
+              <td>
+                <div class="actions">
+                  <button class="action-button action-button--edit" type="button" (click)="editProduct(product.id)">
+                    <span>✎</span>
+                    Editar
+                  </button>
+                  <button class="action-button action-button--delete" type="button" (click)="deleteProduct(product.id)">
+                    <span>🗑</span>
+                    Eliminar
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+
+      <div class="table-footer">
+        <button class="create-button" type="button" (click)="createProduct()">
+          <span>＋</span>
+          Nuevo producto
+        </button>
+      </div>
+    </div>
+  }
+</section>
